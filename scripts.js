@@ -47,5 +47,12 @@ console.log(namesLength);
 
 // 4. **Sorting**: Use `sort` to alphabetically sort the provinces.
 
-const provincesInAlphabeticalOrder = provinces.sort()
-console.log(provincesInAlphabeticalOrder)
+const provincesInAlphabeticalOrder = provinces.sort();
+console.log(provincesInAlphabeticalOrder);
+
+// 5. **Filtering Cape**: Use `filter` to remove provinces containing "Cape". Log the count of remaining provinces.
+
+const filterProvincesWithCape = provinces.filter(
+  (province) => !province.includes("Cape")
+);
+console.log(filterProvincesWithCape);
