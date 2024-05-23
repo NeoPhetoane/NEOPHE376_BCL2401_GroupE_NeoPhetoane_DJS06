@@ -56,3 +56,10 @@ const filterProvincesWithCape = provinces.filter(
   (province) => !province.includes("Cape")
 );
 console.log(filterProvincesWithCape);
+
+// 6. **Finding 'S'**: Create a boolean array using `map` and `some` to determine if a name contains the letter 'S'.
+
+const containsS = names.map((name) => {
+  return name.toLowerCase().split('').some((letter) => letter === "s");
+});
+console.log(containsS);
