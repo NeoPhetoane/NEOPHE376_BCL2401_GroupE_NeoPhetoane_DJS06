@@ -94,17 +94,29 @@ console.log(
   products.filter((product) => product.product.length <= 5),
 
   // 3. Price Manipulation
-//
+  //
   products
-    .filter((product) => String(product.price).trim() !== "") 
+    .filter((product) => String(product.price).trim() !== "")
     //
     .map((product) => parseFloat(product.price) || 0)
     //
     .reduce((acc, price) => acc + price, 0),
 
-    // 4. Concatenate Product Name
+  // 4. Concatenate Product Name
 
-    products.reduce((acc, product) => acc + " " + product.product, ""),
+  products.reduce((acc, product) => acc + " " + product.product, ""),
 
-    
+  // 5. Find Extremes in Prices
+  products.reduce((acc, product) => {
+    const price = parseInt(product.price);
+    if (acc.highest === undefined || price > acc.highest) {
+      acc.highest = price;
+    }
+    if (acc.lowest === undefined || price < acc.lowest) {
+      acc.lowest = price;
+    }
+    return acc;
+  }, { highest: undefined, lowest: undefined }),
+
+  // 6. **Object Transformation
 );
