@@ -88,11 +88,19 @@ console.log(mappingNamesToProvinces);
 
 console.log(
   //1. Log Products
-products.map((product) => product.product),
+  products.map((product) => product.product),
 
   // 2. Filter by Name Length
   products.filter((product) => product.product.length <= 5),
 
-  
-  
-)
+  // 3. Price Manipulation
+//
+  products
+    .filter((product) => String(product.price).trim() !== "") 
+    //
+    .map((product) => parseFloat(product.price) || 0)
+    //
+    .reduce((acc, price) => acc + price, 0),
+
+    // 4. Concatenate Product Name
+);
