@@ -76,16 +76,6 @@ console.log(mappingNamesToProvinces);
 
 // Advanced Exercises (Single `console.log` Execution)
 
-// #### Advanced Exercises (Single `console.log` Execution)
-// For these exercises, wrap your logic in a single `console.log` statement:
-
-// 1. **Log Products**: Iterate over the products array, logging each product name.
-// 2. **Filter by Name Length**: Filter out products with names longer than 5 characters.
-// 3. **Price Manipulation**: Filter out products without prices, convert string prices to numbers, and calculate the total price using `reduce`.
-// 4. **Concatenate Product Names**: Use `reduce` to concatenate all product names into a single string.
-// 5. **Find Extremes in Prices**: Identify the highest and lowest-priced items, returning a string formatted as "Highest: X. Lowest: Y."
-// 6. **Object Transformation**: Using `Object.entries` and `reduce`, recreate the products object with keys 'name' and 'cost', maintaining their original values.
-
 console.log(
   //1. Log Products
   products.map((product) => product.product),
@@ -94,19 +84,22 @@ console.log(
   products.filter((product) => product.product.length <= 5),
 
   // 3. Price Manipulation
-  //
+  // Filters the products array, keeping only those objects whose 'price' is a non-empty string.
   products
     .filter((product) => String(product.price).trim() !== "")
-    //
+    // Maps over the filtered array, converting the 'price' property to a float. If the conversion fails, it defaults to 0.
     .map((product) => parseFloat(product.price) || 0)
-    //
+    //Reduces the mapped array to a single value, which is the sum of all the prices.
     .reduce((acc, price) => acc + price, 0),
 
-  // 4. Concatenate Product Name
 
+
+  // 4. Concatenate Product Name
+ // Reduces the products array to a string, then concatenates all the 'product' names with a space in between.
   products.reduce((acc, product) => acc + " " + product.product, ""),
 
   // 5. Find Extremes in Prices
+ // Iterates through each product, parsing the 'price' property as an integer,
   products.reduce((acc, product) => {
     const price = parseInt(product.price);
     if (acc.highest === undefined || price > acc.highest) {
@@ -119,4 +112,17 @@ console.log(
   }, { highest: undefined, lowest: undefined }),
 
   // 6. **Object Transformation
+
+  //// Transforms the products array into an object where each key is a product name
+  Object.entries(
+    products.reduce((acc, product) => {
+      acc[product.product] = {
+        name: product.product,
+        cost: parseInt(product.price) || 0,
+      };
+      return acc;
+        // Then, it converts this object into an array of objects with a single key-value pair
+    }, {})
+  ).map(([key, value]) => ({ [key]: value })) // Destructuring and wrapping in object
+
 );
