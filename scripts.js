@@ -103,4 +103,8 @@ console.log(
     .reduce((acc, price) => acc + price, 0),
 
     // 4. Concatenate Product Name
+
+    products.reduce((acc, product) => acc + " " + product.product, ""),
+
+    
 );
