@@ -74,3 +74,19 @@ const mappingNamesToProvinces = names.reduce((acc, name, index) => {
 }, {});
 console.log(mappingNamesToProvinces);
 
+// Advanced Exercises (Single `console.log` Execution)
+
+// #### Advanced Exercises (Single `console.log` Execution)
+// For these exercises, wrap your logic in a single `console.log` statement:
+
+// 1. **Log Products**: Iterate over the products array, logging each product name.
+// 2. **Filter by Name Length**: Filter out products with names longer than 5 characters.
+// 3. **Price Manipulation**: Filter out products without prices, convert string prices to numbers, and calculate the total price using `reduce`.
+// 4. **Concatenate Product Names**: Use `reduce` to concatenate all product names into a single string.
+// 5. **Find Extremes in Prices**: Identify the highest and lowest-priced items, returning a string formatted as "Highest: X. Lowest: Y."
+// 6. **Object Transformation**: Using `Object.entries` and `reduce`, recreate the products object with keys 'name' and 'cost', maintaining their original values.
+
+console.log(
+  //1. Log Products
+products.map((product) => product.product),
+)
